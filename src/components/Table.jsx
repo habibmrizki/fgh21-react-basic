@@ -7,40 +7,39 @@ function Table() {
       name: "habib",
       umur: 22,
       gender: "Laki-laki",
-      perokok: true,
-      jenisRokok: ["Malboro", "Esse"],
+      smoke: true,
+      smoker: ["Malboro", "Esse"],
     },
     {
       id: 1235,
       name: "Rizki",
       umur: 21,
       gender: "Laki-laki",
-      perokok: true,
-      jenisRokok: ["Malboro", " Berry Pop"],
+      smoke: true,
+      smoker: ["Malboro", " Berry Pop"],
     },
   ]);
 
   function response(event) {
-    event.prevenDefault();
+    event.preventDefault();
     const name = event.target.name.value;
     const umur = event.target.umur.value;
     const gender = event.target.gender.value;
-    const perokok = event.target.gender.value;
+    const smoke = event.target.smoke.value;
     const newData = [...data];
     newData.push({
       id: Math.round(Math.random() * 9999),
       name,
       umur,
       gender,
-      perokok,
-      jenisRokok,
+      smoke,
+      smoker,
     });
     setData(newData);
-    console.log(newData);
   }
 
   return (
-    <div>
+    <div className="content-form">
       <form className="form-style" onSubmit={response}>
         <div>
           <label htmlFor="name">Nama</label>
@@ -105,7 +104,7 @@ function Table() {
             <label htmlFor="esse">Esse</label>
           </div>
         </div>
-        <button type="button">Save</button>
+        <button type="submit">Save</button>
       </form>
       <table
         className="table"
@@ -128,8 +127,8 @@ function Table() {
                 <td>{item.name}</td>
                 <td>{item.umur}</td>
                 <td>{item.gender}</td>
-                <td>{item.perokok ? "ya" : "tidak"}</td>
-                <td>{item.jenisRokok}</td>
+                <td>{item.smoke ? "ya" : "tidak"}</td>
+                <td>{item.smoker}</td>
               </tr>
             );
           })}

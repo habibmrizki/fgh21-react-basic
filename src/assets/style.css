@@ -6,13 +6,18 @@
   margin: 0;
 }
 
-.container {
+.container,
+.container-counter {
   display: flex;
   justify-content: center;
   height: 100vh;
   align-items: center;
   background-color: grey;
   background: url(./image/logo-background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
 }
 
 .text-form {
@@ -28,6 +33,20 @@
   background-color: rgb(255, 255, 255);
   padding: 20px;
   border-radius: 10px;
+}
+
+.content-form {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+form.form-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 form.form {
@@ -80,7 +99,7 @@ form.form-style {
   width: 100%;
 } */
 
-.container {
+.container-counter {
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -88,5 +107,8 @@ form.form-style {
 
 button {
   color: #fff;
+  width: 55px;
+  height: 55px;
+  font-size: 20px;
   background-color: rgb(220, 65, 65);
 }

@@ -18,7 +18,7 @@ function Counter() {
     }
   }
   return (
-    <div className="container">
+    <div className="container-counter">
       <div>
         <button type="button" onClick={minusButton}>
           -

@@ -3,9 +3,9 @@ import assetPic from "../assets/image/logo-background.png";
 
 function Form() {
   function doLogin(event) {
-    event.prevetDefault();
+    event.preventDefault();
     const email = event.target.email.value;
-    const password = event.target.passwrod.value;
+    const password = event.target.password.value;
     if (email === "admin@mail.com" && password === 1234) {
       window.alert("berhasil masuk");
     } else {
@@ -23,17 +23,23 @@ function Form() {
           <div className="input-form">
             <div className="email">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" placeholder="Enter Your Email" />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter Your Email"
+              />
             </div>
             <div className="password">
               <label htmlFor="password">Password</label>
               <input
                 type="password"
+                name="password"
                 id="password"
                 placeholder="Enter Your Password"
               />
             </div>
-            <button type="button">Sign In</button>
+            <button type="submit">Sign In</button>
           </div>
           <div className="forgot-password">
             Forgot your Password? <a href="#">Reset Password</a>
