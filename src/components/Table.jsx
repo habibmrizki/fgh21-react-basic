@@ -1,90 +1,94 @@
 import React from "react";
 
-function Table() {
+function Survey(item) {
   const [data, setData] = React.useState([
     {
       id: 1234,
-      name: "habib",
-      umur: 22,
+      name: "Habib",
+      age: 22,
       gender: "Laki-laki",
-      smoke: true,
-      smoker: ["Malboro", "Esse"],
+      isSmoker: true,
+      cigar: ["Gudang Garam", "Marlboro"],
     },
     {
       id: 1235,
-      name: "Rizki",
-      umur: 21,
+      name: "Budi",
+      age: 40,
       gender: "Laki-laki",
-      smoke: true,
-      smoker: ["Malboro", " Berry Pop"],
+      isSmoker: true,
+      cigar: ["Esse", "Lucky Strike"],
     },
   ]);
 
   function response(event) {
     event.preventDefault();
     const name = event.target.name.value;
-    const umur = event.target.umur.value;
+    const age = event.target.age.value;
     const gender = event.target.gender.value;
-    const smoke = event.target.smoke.value;
+    const isSmoker = event.target.isSmoker.value;
+    let cigar = [];
+    for (let i = 0; i < cigar.length; i++) {
+      if (cigar[i].checked) {
+        cigar.push(cigar[i].value);
+      }
+    }
+
+    console.log(cigar);
+
     const newData = [...data];
     newData.push({
-      id: Math.round(Math.random() * 9999),
+      id: Math.round(Math.random() * 999),
       name,
-      umur,
+      age,
       gender,
-      smoke,
-      smoker,
+      isSmoker,
+      cigar,
     });
     setData(newData);
   }
-
   return (
-    <div className="content-form">
-      <form className="form-style" onSubmit={response}>
+    <div className="container-survey">
+      <form onSubmit={response}>
         <div>
-          <label htmlFor="name">Nama</label>
           <div>
-            <input type="text" id="name" className="input-name" />
+            <label htmlFor="name">Name</label>
           </div>
+          <input type="text" id="name" name="name" />
         </div>
         <div>
-          <label htmlFor="umur">umur</label>
           <div>
-            <input type="text" id="umur" className="input-umur" />
+            <label htmlFor="age">Age</label>
           </div>
+          <input type="number" id="age" name="age" />
         </div>
         <div>
-          <div>Apa jenis kelamin anda?</div>
-          <div>
-            <input type="radio" id="male" name="gender" value="Laki-laki" />
-            <label htmlFor="male">Laki-laki</label>
-          </div>
-          <div>
-            <input type="radio" id="female" name="gender" value="Perempuan" />
-            <label htmlFor="female">Perempuan</label>
-          </div>
+          <div>Gender</div>
+          <input type="radio" name="gender" id="male" value={"Laki-laki"} />
+          <label htmlFor="male">Laki-laki</label>
+          <input type="radio" name="gender" id="female" value={"Perempuan"} />
+          <label htmlFor="female">Perempuan</label>
         </div>
         <div>
-          <div>Apa anda merokok?</div>
-          <div>
-            <input type="radio" id="yes" name="smoke" value="Ya" />
-            <label htmlFor="yes">Yes</label>
-          </div>
-          <div>
-            <input type="radio" id="no" name="smoke" value="TIdak" />
-            <label htmlFor="no">No</label>
-          </div>
+          <div>Apakah Anda Perokok?</div>
+          <input type="radio" name="isSmoker" id="yes" value={"Ya"} />
+          <label htmlFor="yes">Ya</label>
+          <input type="radio" name="isSmoker" id="no" value={"Tidak"} />
+          <label htmlFor="no">Tidak</label>
         </div>
         <div>
-          <div>Jika anda perokok, jenis rokok apa yang anda pakai?</div>
+          <div>Jenis Rokok</div>
+          <div>
+            <input type="checkbox" name="cigar" id="marl" value={"Marlboro"} />
+            <label htmlFor="marl">Marlboro</label>
+          </div>
           <div>
             <input
               type="checkbox"
-              id="gudang-garam-filter"
-              name="smoker"
-              value="Gudang Garam Filter"
+              name="cigar"
+              id="gudang"
+              value={"Gudang Garam"}
             />
-            <label htmlFor="gudang-garam-filter">Gudang Garam Filter</label>
+            <label htmlFor="gudang">GudangGaram</label>
           </div>
           <div>
             <input
@@ -93,42 +97,36 @@ function Table() {
               name="smoker"
               value="Lucky Strike"
             />
-            <label htmlFor="lucky-strike">Lucky Strike</label>
+            <label for="lucky-strike">Lucky Strike</label>
           </div>
           <div>
-            <input type="checkbox" id="malboro" name="smoker" value="Malboro" />
-            <label htmlFor="malboro">Malboro</label>
-          </div>
-          <div>
-            <input type="checkbox" id="esse" name="smoker" value="Esse" />
+            <input type="checkbox" name="cigar" id="esse" value={"Esse"} />
             <label htmlFor="esse">Esse</label>
           </div>
         </div>
-        <button type="submit">Save</button>
+        <div>
+          <button type="submit">Save</button>
+        </div>
       </form>
-      <table
-        className="table"
-        border={1}
-        style={{ borderCollapse: "collapse" }}
-      >
+      <table border={1} style={{ borderCollapse: "collapse" }}>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Umur</th>
+            <th>Age</th>
             <th>Gender</th>
-            <th>Perokok</th>
-            <th>JenisRokok</th>
+            <th>Is Smoke</th>
+            <th>Cigar Variant</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => {
             return (
-              <tr key={`survey-${item.id}`}>
+              <tr key={"survey-" + item.id}>
                 <td>{item.name}</td>
-                <td>{item.umur}</td>
+                <td>{item.age}</td>
                 <td>{item.gender}</td>
-                <td>{item.smoke ? "ya" : "tidak"}</td>
-                <td>{item.smoker}</td>
+                <td>{item.isSmoker ? "Ya" : "Tidak"}</td>
+                <td>{item.cigar}</td>
               </tr>
             );
           })}
@@ -138,4 +136,4 @@ function Table() {
   );
 }
 
-export default Table;
+export default Survey;
