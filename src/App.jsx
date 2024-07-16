@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       {/* <Counter /> */}
-      {/* {<Table />} */}
-      {<FormSignup />}
+      {<Table />}
+      {/* {<FormSignup />} */}
       {/* {<Form />} */}
     </div>
   );

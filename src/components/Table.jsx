@@ -15,7 +15,7 @@ function Survey(item) {
       name: "Budi",
       age: 40,
       gender: "Laki-laki",
-      isSmoker: true,
+      isSmoker: false,
       cigar: ["Esse", "Lucky Strike"],
     },
   ]);
@@ -26,23 +26,25 @@ function Survey(item) {
     const age = event.target.age.value;
     const gender = event.target.gender.value;
     const isSmoker = event.target.isSmoker.value;
-    let cigar = [];
-    for (let i = 0; i < cigar.length; i++) {
-      if (cigar[i].checked) {
-        cigar.push(cigar[i].value);
-      }
-    }
+    const cigar = event.target.cigar;
 
-    console.log(cigar);
+    let cigars = [];
+    cigar.forEach((item) => {
+      if (item.checked) {
+        cigars.push(item.value);
+      }
+    });
+
+    const arrCigar = cigars.join("; ");
 
     const newData = [...data];
     newData.push({
       id: Math.round(Math.random() * 999),
-      name,
-      age,
-      gender,
-      isSmoker,
-      cigar,
+      name: name,
+      age: age,
+      gender: gender,
+      isSmoker: isSmoker,
+      cigar: arrCigar,
     });
     setData(newData);
   }
@@ -94,8 +96,8 @@ function Survey(item) {
             <input
               type="checkbox"
               id="lucky-strike"
-              name="smoker"
-              value="Lucky Strike"
+              name="cigar"
+              value={"Lucky Strike"}
             />
             <label for="lucky-strike">Lucky Strike</label>
           </div>
