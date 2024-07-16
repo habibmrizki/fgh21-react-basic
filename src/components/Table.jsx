@@ -1,6 +1,6 @@
 import React from "react";
 
-function Survey(item) {
+function Survey() {
   const [data, setData] = React.useState([
     {
       id: 1234,
@@ -8,7 +8,7 @@ function Survey(item) {
       age: 22,
       gender: "Laki-laki",
       isSmoker: true,
-      cigar: ["Gudang Garam", "Marlboro"],
+      cigar: ["Gudang Garam" + "; " + "Marlboro"],
     },
     {
       id: 1235,
@@ -16,7 +16,7 @@ function Survey(item) {
       age: 40,
       gender: "Laki-laki",
       isSmoker: false,
-      cigar: ["Esse", "Lucky Strike"],
+      cigar: ["Esse" + "; " + "Lucky Strike"],
     },
   ]);
 
@@ -50,7 +50,7 @@ function Survey(item) {
   }
   return (
     <div className="container-survey">
-      <form onSubmit={response}>
+      <form onSubmit={response} className="content-table">
         <div>
           <div>
             <label htmlFor="name">Name</label>

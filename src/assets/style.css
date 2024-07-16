@@ -55,6 +55,12 @@ form.form {
   flex-direction: column;
 }
 
+.content-table {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .input-form {
   display: flex;
   flex-direction: column;
