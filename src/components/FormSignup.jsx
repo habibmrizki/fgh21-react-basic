@@ -3,11 +3,18 @@ function FormSignup() {
   function doSignup(event) {
     event.preventDefault();
     const email = event.target.email.value;
+    const fullName = event.target.fullName.value;
     const password = event.target.password.value;
-    if (email === "admin@mail.com" && password === 1234) {
-      window.alert("berhasil masuk");
-    } else {
+    const confirmPassword = event.target.confirmPassword.value;
+    if (
+      fullName === "habib" &&
+      email === "habib@mail.com" &&
+      password === 1234 &&
+      confirmPassword === 1234
+    ) {
       window.alert("wrong email or password");
+    } else {
+      window.alert("berhasil masuk");
     }
   }
   return (
@@ -20,11 +27,11 @@ function FormSignup() {
         <form onSubmit={doSignup} className="form">
           <div className="input-form">
             <div className="Fullname">
-              <label htmlFor="Fullname">Fullname</label>
+              <label htmlFor="fullName">Fullname</label>
               <input
-                type="Fullname"
-                name="Fullname"
-                id="Fullname"
+                type="fullName"
+                name="fullName"
+                id="fullName"
                 placeholder="Enter Your Fullname"
               />
             </div>
